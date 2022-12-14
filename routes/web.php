@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudyController;
@@ -21,9 +22,9 @@ Route::get('/', function () {
 
 });
 
-Route::get('/hola', function () {
+Route::get('/serverinfo', function () {
     
-    print "Hola mundo";
+    return $_SERVER;
 
 });
 
@@ -41,13 +42,23 @@ Route::get('/saludo/{nombre?}', function ($nombre = "Mundo") {
 
 });
 
+Route::get('prueba2/{name}', [PruebaController::class, 'saludoCompleto']);
+
 //Route::get('studies', [StudyController::class, 'index']);
 
 //Route::get('studies/create', [StudyController::class, 'create']);
 
-//Route::get('studies/{id}', [StudyController::class, 'show']);
+
+/*Route::get('studies/{id}', function($id){
+
+    print "el modulo con id: $id";
+
+})->where('id', '[0-9]');*/
+
+
 
 //Route::get('studies/{id}/edit', [StudyController::class, 'edit']);
+
 
 //Route::delete('studies/{id}', [StudyController::class, 'destroy']);
 
@@ -55,7 +66,7 @@ Route::get('/saludo/{nombre?}', function ($nombre = "Mundo") {
 
 //Route::post('studies', [StudyController::class, 'store']);
 
-Route::resource('studies', StudyController::class);
+//Route::resource('studies', StudyController::class);
 
 
 

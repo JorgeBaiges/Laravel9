@@ -28,7 +28,22 @@ class StudyController extends Controller
 
     public function create() {
 
-        print "Create";
+        print "CreateStudy";
+
+    }
+
+    public function destroy($id) {
+
+
+    }
+
+    public function update($id) {
+
+
+    }
+
+    public function store() {
+
 
     }
 
