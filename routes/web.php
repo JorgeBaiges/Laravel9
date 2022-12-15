@@ -4,6 +4,7 @@ use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudyController;
+use App\Http\Controllers\AppEjemplo;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,16 @@ use App\Http\Controllers\StudyController;
 |
 */
 
+//RUTAS CON NOMBRE
+
+Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
+)->name('infoasig');
+
 Route::get('/', function () {
 
-    return view('welcome');
-
+    //return view('welcome');
+    print "<a href='" . route('infoasig') . "'>INFORMACION DE ASIGNATURA</a><br>";
+    
 });
 
 Route::get('/serverinfo', function () {
@@ -56,14 +63,11 @@ Route::get('prueba2/{name}', [PruebaController::class, 'saludoCompleto']);
 })->where('id', '[0-9]');*/
 
 
-
 //Route::get('studies/{id}/edit', [StudyController::class, 'edit']);
 
 
 //Route::delete('studies/{id}', [StudyController::class, 'destroy']);
-
 //Route::put('studies/{id}', [StudyController::class, 'update']);
-
 //Route::post('studies', [StudyController::class, 'store']);
 
 //Route::resource('studies', StudyController::class);
