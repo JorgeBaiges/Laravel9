@@ -10,6 +10,7 @@
 @stop
 
 @section('maincontent')
+
     @parent
     <h4>Añadido a main Content</h4>
 

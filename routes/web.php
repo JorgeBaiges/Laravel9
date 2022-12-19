@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\AppEjemplo;
+use App\Http\Controllers\AsignaturaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::get('/', function () {
     print "<a href='" . route('infoasig') . "'>INFORMACION DE ASIGNATURA</a><br>";
     
 });
+
+Route::resource('asignaturas', AsignaturaController::class);
 
 Route::get('/serverinfo', function () {
     

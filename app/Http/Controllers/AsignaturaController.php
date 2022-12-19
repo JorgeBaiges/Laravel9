@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PruebaController extends Controller
+class AsignaturaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,6 @@ class PruebaController extends Controller
         //
     }
 
-    public function saludoCompleto($name) {
-
-        return "Hola $name. Encantado de conocerle";
-
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +23,9 @@ class PruebaController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('asignaturas.create');
+
     }
 
     /**
@@ -40,7 +36,9 @@ class PruebaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        dd("HE LLEGADO AQUI");
+
     }
 
     /**
