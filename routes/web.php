@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\AppEjemplo;
 use App\Http\Controllers\AsignaturaController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +21,35 @@ use App\Http\Controllers\AsignaturaController;
 
 //RUTAS CON NOMBRE
 
-Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
-)->name('infoasig');
+//EJERCICIO 1
 
-Route::get('/', function () {
+Route::get('/',[HomeController::class, 'getHome']);
+
+Route::get('/login',);
+
+Route::get('/logout',);
+
+Route::get('/catalog',[HomeController::class, 'getCreate']);
+
+Route::get('/catalog/show/{id}',[HomeController::class, 'getShow']);
+
+Route::get('/catalog/create',[HomeController::class, 'getCreate']);
+
+Route::get('catalog/edit/{id}',[HomeController::class, 'getEdit']);
+
+//Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
+//)->name('infoasig');
+
+/*Route::get('/', function () {
 
     //return view('welcome');
     print "<a href='" . route('infoasig') . "'>INFORMACION DE ASIGNATURA</a><br>";
     
-});
+});*/
 
 Route::resource('asignaturas', AsignaturaController::class);
 
-Route::get('/serverinfo', function () {
+/*Route::get('/serverinfo', function () {
     
     return $_SERVER;
 
