@@ -7,6 +7,8 @@ use App\Http\Controllers\StudyController;
 use App\Http\Controllers\AppEjemplo;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CatalogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +25,19 @@ use App\Http\Controllers\HomeController;
 
 //EJERCICIO 1
 
-Route::get('/',[HomeController::class, 'getHome']);
+Route::get('/', [HomeController::class, 'getHome']);
 
-Route::get('/login',);
+Route::get('/login', [CatalogController::class, 'getIndex']);
 
 Route::get('/logout',);
 
-Route::get('/catalog',[HomeController::class, 'getCreate']);
+Route::get('/catalog',[CatalogController::class, 'getCreate']);
 
-Route::get('/catalog/show/{id}',[HomeController::class, 'getShow']);
+Route::get('/catalog/show/{id}',[CatalogController::class, 'getShow']);
 
-Route::get('/catalog/create',[HomeController::class, 'getCreate']);
+Route::get('/catalog/create',[CatalogController::class, 'getCreate']);
 
-Route::get('catalog/edit/{id}',[HomeController::class, 'getEdit']);
+Route::get('catalog/edit/{id}',[CatalogController::class, 'getEdit']);
 
 //Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
 //)->name('infoasig');
