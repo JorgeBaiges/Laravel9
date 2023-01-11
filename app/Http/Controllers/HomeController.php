@@ -14,4 +14,10 @@ class HomeController extends Controller
         
     }
 
+    public function getLogin(){
+
+        return view('auth.login');
+
+    }
+
 }

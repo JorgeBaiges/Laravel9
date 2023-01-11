@@ -27,17 +27,18 @@ use App\Http\Controllers\CatalogController;
 
 Route::get('/', [HomeController::class, 'getHome']);
 
-Route::get('/login', [CatalogController::class, 'getIndex']);
+Route::get('/login', [HomeController::class, 'getLogin']);
 
 Route::get('/logout',);
 
-Route::get('/catalog',[CatalogController::class, 'getCreate']);
+Route::get('/catalog',[CatalogController::class, 'getIndex']);
 
 Route::get('/catalog/show/{id}',[CatalogController::class, 'getShow']);
 
 Route::get('/catalog/create',[CatalogController::class, 'getCreate']);
 
 Route::get('catalog/edit/{id}',[CatalogController::class, 'getEdit']);
+
 
 //Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
 //)->name('infoasig');

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+<h1>Show</h1>
 <div class="row">
     
     <div class="col-sm-4">
