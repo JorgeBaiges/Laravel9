@@ -8,6 +8,7 @@ use App\Http\Controllers\AppEjemplo;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -23,9 +24,12 @@ use App\Http\Controllers\CatalogController;
 
 //RUTAS CON NOMBRE
 
+Route::resource('products', ProductController::class);
+
+
 //EJERCICIO 1
 
-Route::get('/', [HomeController::class, 'getHome']);
+/*Route::get('/', [HomeController::class, 'getHome']);
 
 Route::get('/login', [HomeController::class, 'getLogin']);
 
@@ -37,7 +41,7 @@ Route::get('/catalog/show/{id}',[CatalogController::class, 'getShow']);
 
 Route::get('/catalog/create',[CatalogController::class, 'getCreate']);
 
-Route::get('catalog/edit/{id}',[CatalogController::class, 'getEdit']);
+Route::get('catalog/edit/{id}',[CatalogController::class, 'getEdit']);*/
 
 
 //Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
