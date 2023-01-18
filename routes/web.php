@@ -47,12 +47,11 @@ Route::get('catalog/edit/{id}',[CatalogController::class, 'getEdit']);*/
 //Route::get('/informacion-asignatura', [AppEjemplo::class,'mostrarinformacion']
 //)->name('infoasig');
 
-/*Route::get('/', function () {
+Route::get('/', function () {
 
-    //return view('welcome');
-    print "<a href='" . route('infoasig') . "'>INFORMACION DE ASIGNATURA</a><br>";
+    return view('welcome');
     
-});*/
+});
 
 Route::resource('asignaturas', AsignaturaController::class);
 
@@ -101,3 +100,7 @@ Route::get('prueba2/{name}', [PruebaController::class, 'saludoCompleto']);
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        print("Hola");
+        //
     }
 
     /**
@@ -51,7 +51,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $product = Product::find($id);
+        return view('product.show',['product' => $product]);
+
     }
 
     /**
@@ -62,7 +65,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $product = Product::find($id);
+        return view('product.edit',['product' => $product]);
+
     }
 
     /**
@@ -74,7 +80,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        
+
     }
 
     /**
@@ -85,6 +93,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $product = Product::find($id);
+        print "Waiting";
+
     }
 }
