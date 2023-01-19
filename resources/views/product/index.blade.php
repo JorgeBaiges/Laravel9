@@ -26,9 +26,11 @@
                         
                         </td>
                         <td>
-
-                            <a class="btn btn-warning" href="{{ route('products.destroy', $product->id) }}">Borrar</a>
-                        
+                            <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-warning" type="submit">Borrar</a>
+                            </form>
                         </td>
 
                     </tr>

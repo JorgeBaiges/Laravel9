@@ -29,7 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('product.create');
+
     }
 
     /**
@@ -40,7 +42,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            
+            "nombre" => "required | max:100",
+            "descripcion" => "required",
+            "precio" => "required | numeric | min:0 | not_in:0"
+
+        ],[
+
+            "nombre.required" => "Debes introducir nombre de no mas de 100 caracteres",
+            "descripcion.required" => "Debes escribir una descripcion del producto",
+            "precio.required" => "Debes introducir un precio",
+            "precio.not_in" => "Un numero mayor 0",
+            "precio.min" => "Un numero mayor que 0"
+
+        ]);
+/*
+        $product = new Product;
+        $product->nombre = $request->input('nombre');
+        $product->descripcion = $request->input('descripcion');
+        $product->precio = $request->input('precio');
+        $product->save();
+*/
+        Product::create($request->all());
+        return redirect()->route('products.index')->with('exito', 'Producto creado con exito.');            
+
     }
 
     /**
@@ -80,8 +107,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        
+        $request->validate([
+            
+            "nombre" => "required | max:100",
+            "descripcion" => "required",
+            "precio" => "required | numeric | min:0 | not_in:0"
+
+        ],[
+
+            "nombre.required" => "Debes introducir nombre de no mas de 100 caracteres",
+            "descripcion.required" => "Debes escribir una descripcion del producto",
+            "precio.required" => "Debes introducir un precio",
+            "precio.not_in" => "Un numero mayor 0",
+            "precio.min" => "Un numero mayor que 0"
+
+        ]);
+
+        $product = Product::find($id);
+        $product->nombre = $request->input('nombre');
+        $product->descripcion = $request->input('descripcion');
+        $product->precio = $request->input('precio');
+
+        $product->save();
+
+        return redirect()->route('products.index')->with('exito', 'Producto actualizado con exito.');
 
     }
 
@@ -95,7 +144,9 @@ class ProductController extends Controller
     {
         
         $product = Product::find($id);
-        print "Waiting";
+        $product->delete();
+
+        return redirect()->route('products.index')->with('exito', 'Producto creado con exito.');
 
     }
 }
