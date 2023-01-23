@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>INDEX PRODUCTOS</h1>
+            <h1>LISTA DE PRODUCTOS</h1>
             @if($message = Session::get('exito'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>

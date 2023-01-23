@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\AppEjemplo;
 use App\Http\Controllers\AsignaturaController;
@@ -25,6 +25,9 @@ use App\Http\Controllers\ProductController;
 //RUTAS CON NOMBRE
 
 Route::resource('products', ProductController::class);
+
+Route::resource('clients', ClientController::class);
+
 
 
 //EJERCICIO 1
@@ -53,7 +56,7 @@ Route::get('/', function () {
     
 });
 
-Route::resource('asignaturas', AsignaturaController::class);
+//Route::resource('asignaturas', AsignaturaController::class);
 
 /*Route::get('/serverinfo', function () {
     
