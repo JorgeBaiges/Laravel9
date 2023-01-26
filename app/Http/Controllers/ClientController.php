@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Client;
-
+use App\Models\Order;
 
 use Illuminate\Http\Request;
 
@@ -75,6 +75,7 @@ class ClientController extends Controller
     {
         
         $client = Client::find($id);
+        $order = Order::find($id);
         return view('client.show',['client' => $client]);
 
     }

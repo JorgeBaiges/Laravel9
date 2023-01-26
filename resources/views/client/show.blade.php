@@ -11,9 +11,28 @@
                 <strong>DNI:</strong> {{ $client->DNI }} <br><hr>
                 <strong>Nombre:</strong> {{ $client->Nombre }} <br><hr>
                 <strong>Apellidos:</strong> {{ $client->Apellidos }} <br><hr>
-                <strong>Telefono:</strong> {{ $client->Telefono }} <br><hr>
-                <strong>Email:</strong> {{ $client->Email }} <br><hr>
-                
+                <strong>Telefono:</strong> {{ $client->telefono }} <br><hr>
+                <strong>Email:</strong> {{ $client->Email }} <br><hr>         
+        </div>
+        <div>
+
+            <table class="table table-dark table-hover table-striped">
+                <tr>
+                <th>ID</th>
+                <th>Solicitante</th>
+                <th>Fecha</th>
+                <th>Descripcion</th>
+                </tr>
+                @foreach($client->orders as $pedidos)
+                <tr>
+                    <td>{{ $pedidos->id }}</td>
+                    <td>{{ $pedidos->solicitante }}</td>
+                    <td>{{ $pedidos->fecha }}</td>
+                    <td>{{ $pedidos->descripcion }}</td>
+                </tr>
+                @endforeach
+            </table>
+
         </div>
     </div>
 </div>
