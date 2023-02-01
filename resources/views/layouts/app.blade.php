@@ -36,6 +36,9 @@
                     <li>
                         <a class="nav-link" href="{{ route('products.index') }}">Productos</a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+                    </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 
+use App\Models\User;
+
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +25,9 @@ class ProductController extends Controller
     public function index()
     {
         
+        $this->authorize('viewAny', Product::class);
         $productList = Product::All();
-        //return $productList;
+        //return $userList;
         return view('product.index',['productList' => $productList]);
 
     }
@@ -30,6 +40,7 @@ class ProductController extends Controller
     public function create()
     {
         
+        $this->authorize('create', Product::class);
         return view('product.create');
 
     }
@@ -80,6 +91,7 @@ class ProductController extends Controller
     {
         
         $product = Product::find($id);
+        $this->authorize('view', $product);
         return view('product.show',['product' => $product]);
 
     }
@@ -94,6 +106,7 @@ class ProductController extends Controller
     {
 
         $product = Product::find($id);
+        $this->authorize('update', $product);
         return view('product.edit',['product' => $product]);
 
     }
@@ -146,7 +159,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('exito', 'Producto creado con exito.');
+        return redirect()->route('products.index')->with('exito', 'Producto eliminado con exito.');
 
     }
 }

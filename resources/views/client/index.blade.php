@@ -34,7 +34,7 @@
 
                         </td>
                         <td>
-
+                            
                             <a class="btn btn-info" href="{{ route('clients.show', $client->id) }}">Mostrar</a>
                         
                         </td>
