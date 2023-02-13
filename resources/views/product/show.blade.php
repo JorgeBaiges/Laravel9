@@ -5,6 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1>DETALLE DEL PRODUCTO</h1>
+                @if(session('color') == 'verde')
+                    <button class="btn btn-success">VERDE</button>
+                @else
+                    <button class="btn btn-danger">ROJO</button>
+                @endif
                 <a class="btn btn-primary" href="{{ route('products.index') }}">Volver a la lista</a>
                 @can('update', $product)
                 <a class="btn btn-warning" href="{{ route('products.edit', $product->id) }}">Editar</a>

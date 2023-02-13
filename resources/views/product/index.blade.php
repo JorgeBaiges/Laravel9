@@ -4,6 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            
+            <p>Visitas a la pagina {{ session('contador') }}</p>
             <h1>LISTA DE PRODUCTOS</h1>
             @if($message = Session::get('exito'))
             <div class="alert alert-success">
@@ -16,7 +18,7 @@
             <hr>
             <table class="table table-striped table-hover table-bordered">
                 @foreach( $productList as $key => $product )
-
+                
                     <tr>
                         <td>{{ $product->nombre }}</td>
                         <td>{{ $product->descripcion }}</td>

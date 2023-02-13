@@ -24,6 +24,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if(session('contador') == null) {
+
+            session(['contador' =>'0']);
+
+        }
         
         $this->authorize('viewAny', Product::class);
         $productList = Product::All();
@@ -90,6 +95,19 @@ class ProductController extends Controller
     public function show($id)
     {
         
+        if($id % 2 == 0) {
+
+            $cont = session('contador');
+            $cont++;
+            session(['contador' => $cont]);
+            session(['color' => 'verde']);
+
+        }else{
+            
+            session(['contador' => '0']);
+            session(['color' => 'rojo']);
+        }
+
         $product = Product::find($id);
         $this->authorize('view', $product);
         return view('product.show',['product' => $product]);
