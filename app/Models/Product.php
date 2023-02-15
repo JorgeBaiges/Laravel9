@@ -12,4 +12,13 @@ class Product extends Model
 
     protected $fillable = ["nombre", "descripcion", "precio"];
 
+    //mutator -> set
+    //accesor -> get
+    public function setNombreAttribute($value)
+    {
+
+        $this->attributes['nombre'] = ucfirst(strtoupper($value));
+
+    }
+
 }

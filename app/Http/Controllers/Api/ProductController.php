@@ -10,6 +10,13 @@ use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth:api', ['except' => ['login','register']]);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +24,18 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+        $user = \Auth::user();
+
+        if($user->cant('viewAny', Product::class)){
+
+            return response()->json(['status' => 'NOK', 'message' => 'No tienes permiso'], 403);
+
+        }
+
         $products = Product::All();
         return response()->json(['status' => 'Correcto', 'data' => $products], 200);
+        
     }
 
     /**
@@ -40,6 +57,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         
+        $user = \Auth::user();
+        if($user->cant('create', Product::class)) {
+
+            return response()->json(['status' => 'NOK', 'message' => 'No tienes permiso'], 403);
+
+        }
+
         $validated = Validator::make($request->all(), [
 
             "nombre" => "required | max:100",
@@ -72,16 +96,22 @@ class ProductController extends Controller
     public function show($id)
     
     {
-        
         $product = Product::find($id);
+        $user = \Auth::user();
 
-        if($product) {
+        if(!$product) {
+            return response()->json(['error' => (['code' => 404, 'message' => 'Product not found'])], 404);
 
-            return response()->json(['status' => 'Correcto', 'data' => $product], 200);
+        }
+        if($user->cant('view', $product)) {
+
+            return response()->json(['status' => 'NOK', 'message' => 'No tienes permiso'], 403);
 
         }
 
-        return response()->json(['error' => (['code' => 404, 'message' => 'Product not found'])], 404);
+        return response()->json(['status' => 'Correcto', 'data' => $product], 200);
+
+        
 
 
     }
@@ -107,6 +137,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         
+        $user = \Auth::user();
+        if($user->cant('update', Product::class)) {
+
+            return response()->json(['status' => 'NOK', 'message' => 'No tienes permiso'], 403);
+
+        }
+
         $product = Product::find($id);
 
         if(!$product) {
@@ -148,6 +185,13 @@ class ProductController extends Controller
     public function destroy($id)
     {
         
+        $user = \Auth::user();
+        if($user->cant('destroy', Product::class)) {
+
+            return response()->json(['status' => 'NOK', 'message' => 'No tienes permiso'], 403);
+
+        }
+
         $product = Product::find($id);
 
         if(!$product) {
