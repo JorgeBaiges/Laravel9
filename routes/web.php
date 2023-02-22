@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductAjaxController;
 
 
 /*
@@ -31,7 +32,9 @@ Route::resource('clients', ClientController::class);
 
 Route::resource('users', UserController::class);
 
-
+Route::get('/productsAjax/html', [ProductAjaxController::class, 'indexhtml']);
+Route::get('/productsAjax/json', [ProductAjaxController::class, 'indexjson']);
+Route::resource('productsAjax', ProductAjaxController::class);
 
 //EJERCICIO 1
 

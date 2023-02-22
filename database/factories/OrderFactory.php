@@ -22,7 +22,7 @@ class OrderFactory extends Factory
             "solicitante" => $this->faker->name(),
             "fecha" => $this->faker->dateTime(),
             "descripcion" => $this->faker->text(),       
-            //"client_id" => Client::inRandomOrder()->first()->id,
+            "client_id" => Client::inRandomOrder()->first()->id,
      
         ];
     }
